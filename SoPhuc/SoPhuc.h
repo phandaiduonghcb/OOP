@@ -1,38 +1,47 @@
 #pragma once
 #include <math.h>
 #include <iostream>
+using namespace std;
 class SoPhuc
 {
-private:
-	float iAo;
-	float iThuc;
+protected:
+	int iAo;
+	int iThuc;
 public:
 	SoPhuc();
-	SoPhuc(float iAoMoi);
-	SoPhuc(float iAoMoi, float iThucMoi);
-	SoPhuc(SoPhuc& sp2);
-	float getAo()
+	SoPhuc(int iAoMoi);
+	SoPhuc(int iAoMoi, int iThucMoi);
+	SoPhuc(const SoPhuc& sp2);
+	int getAo()
 	{
 		return iAo;
 	}
-	float getThuc()
+	int getThuc()
 	{
 		return iThuc;
 	}
-	void setAo(float iAoMoi);
-	void setThuc(float iThucMoi);
+	void setAo(int iAoMoi);
+	void setThuc(int iThucMoi);
 	void Nhap();
 	void Xuat();
-	bool Kiemtra();
-	friend SoPhuc TinhToan(SoPhuc a,SoPhuc b);
 	SoPhuc operator+(SoPhuc b);
 	SoPhuc operator-(SoPhuc b);
-	SoPhuc operator*(SoPhuc b);
-	SoPhuc operator/(SoPhuc b);
-	friend SoPhuc operator+(SoPhuc a, float b);
-	friend SoPhuc operator*(SoPhuc a, float b);
-	friend SoPhuc operator+(float a, SoPhuc b);
-	friend SoPhuc operator*(float a, SoPhuc b);
-
+	friend SoPhuc operator+(SoPhuc a, int b);
+	friend SoPhuc operator-(SoPhuc a, int b);
+	friend SoPhuc operator+(int a, SoPhuc b);
+	friend SoPhuc operator-(int a, SoPhuc b);
+	SoPhuc& operator=(SoPhuc& a);
+	friend istream& operator>>(istream& is, SoPhuc& b)
+	{
+		is >> b.iThuc;
+		is >> b.iAo;
+		return is;
+	}
+	friend ostream& operator<<(ostream& os, SoPhuc b)
+	{
+		os<< b.iThuc << "+" << "(" << b.iAo << ")" << ".i" << endl;
+		return os;
+	}
+	SoPhuc& operator++();
+	SoPhuc operator++(int);
 };
-using namespace std;

@@ -1,14 +1,10 @@
 #include "SoPhuc.h"
+#include "SoAo.h"
 int main()
 {
-	SoPhuc a, b, kq;
+	SoAo a,b;
 	a.Nhap();
 	b.Nhap();
-	if (a.Kiemtra() || b.Kiemtra())
-		cout << "ERROR";
-	else {
-		kq = TinhToan(a, b);
-		kq.Xuat();
-	}
-	
+	SoAo temp = a.Tong(b);
+	temp.Xuat();
 }

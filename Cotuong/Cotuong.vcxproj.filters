@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SoPhuc.cpp">
+    <ClCompile Include="Banco.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SoAo.cpp">
+    <ClCompile Include="Quanco.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SoPhuc.h">
+    <ClInclude Include="Banco.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SoAo.h">
+    <ClInclude Include="Quanco.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,21 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SoPhuc.cpp">
+    <ClCompile Include="PS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SoAo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SoPhuc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SoAo.h">
+    <ClInclude Include="PS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

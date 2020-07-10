@@ -1,0 +1,8 @@
+﻿  Source.cpp
+C:\Users\phand\source\repos\Temp\Temp2\Source.cpp(28,10): warning C4553: '==': result of expression not used; did you intend '='?
+  Generating code
+  3 of 4 functions (75.0%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Temp2.vcxproj -> C:\Users\phand\source\repos\Temp\Release\Temp2.exe

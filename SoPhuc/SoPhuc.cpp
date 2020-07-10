@@ -1,72 +1,54 @@
 #include "SoPhuc.h"
+using namespace std;
 SoPhuc::SoPhuc()
 {
 	iAo = 1;
 	iThuc = 1;
 }
-SoPhuc::SoPhuc(float iAoMoi)
+SoPhuc::SoPhuc(int iAoMoi)
 {
 	iAo = iAoMoi;
 	iThuc = 1;
 }
-SoPhuc::SoPhuc(float iThucMoi, float iAoMoi)
+SoPhuc::SoPhuc(int iThucMoi, int iAoMoi)
 {
 	iAo = iAoMoi;
 	iThuc = iThucMoi;
 }
-SoPhuc::SoPhuc(SoPhuc& sp2)
+SoPhuc::SoPhuc(const SoPhuc& sp2)
 {
 	iThuc = sp2.iThuc;
 	iAo = sp2.iAo;
 	
 }
-void SoPhuc::setAo(float iAoMoi)
+void SoPhuc::setAo(int iAoMoi)
 {
 	iAo = iAoMoi;
 }
-void SoPhuc::setThuc(float iThucMoi)
+void SoPhuc::setThuc(int iThucMoi)
 {
 	iThuc = iThucMoi;
 }
 void SoPhuc::Nhap()
 {
+	cout << "Thuc: ";
 	cin >> iThuc;
+	cout << "Ao: ";
 	cin >> iAo;
 }
 void SoPhuc::Xuat()
 {
-	if (iThuc == 0)
-	{
-		if (iAo == 0)
-			cout << "";
-		else
-		{
-			cout << iAo << "i";
-		}
-	}
-	else
-	{
-		if (iAo == 0)
-			cout << iThuc;
-		else
-		{
-			if (iAo > 0)
-				cout << iThuc << " + " << iAo << "i";
-			else if (iAo < 0)
-			{
-				cout << iThuc << " - " << abs(iAo) << "i";
-			}
-		}
-	}
-}
-bool SoPhuc::Kiemtra()
-{
-	if (sqrt(iThuc * iThuc + iAo * iAo) == 0)
-		return true;
-	else
-	{
-		return false;
-	}
+	if (iThuc != 0)
+		cout << iThuc;
+	if (iAo < 0)
+		cout << iAo << ".i" << endl;
+	else if (iAo > 0 && iThuc!=0)
+		cout << "+" << iAo << ".i" << endl;
+	else if (iAo > 0 && iThuc == 0)
+		cout << iAo << ".i" << endl;
+	if (iThuc == 0 && iAo == 0)
+		cout << "0";
+	//cout << iThuc << "+" << "(" << iAo << ")" << ".i"<<endl;
 }
 SoPhuc SoPhuc::operator+(SoPhuc b)
 {
@@ -82,58 +64,50 @@ SoPhuc SoPhuc::operator-(SoPhuc b)
 	kq.iAo = iAo - b.iAo;
 	return kq;
 }
-SoPhuc SoPhuc::operator*(SoPhuc b)
+SoPhuc& SoPhuc::operator=(SoPhuc& a)
 {
-	SoPhuc kq;
-	kq.iThuc = iThuc * b.iThuc - iAo * b.iAo;
-	kq.iAo = iThuc * b.iAo + iAo * b.iThuc;
-	return kq;
+	iThuc = a.iThuc;
+	iAo = a.iAo;
+	return *this;
 }
-SoPhuc SoPhuc::operator/(SoPhuc b)
-{
-	SoPhuc kq;
-	kq.iThuc = (iThuc * b.iThuc + iAo * b.iAo) / (b.iThuc * b.iThuc + b.iAo * b.iAo);
-	kq.iAo = (b.iThuc * iAo - iThuc * b.iAo) / (b.iThuc * b.iThuc + b.iAo * b.iAo);
-	return kq;
-}
-SoPhuc operator+(SoPhuc a, float b)
+SoPhuc operator+(SoPhuc a, int b)
 {
 	SoPhuc kq;
 	kq.iThuc = b + a.iThuc;
 	kq.iAo = a.iAo;
 	return kq;
 }
-SoPhuc operator+(float b, SoPhuc a)
+SoPhuc operator+(int b, SoPhuc a)
 {
 	SoPhuc kq;
 	kq.iThuc = b + a.iThuc;
 	kq.iAo = a.iAo;
 	return kq;
 }
-SoPhuc operator*(SoPhuc a, float b)
+SoPhuc operator-(SoPhuc a, int b)
 {
 	SoPhuc kq;
-	kq.iThuc = b * a.iThuc;
-	kq.iAo = b * a.iAo;
+	kq.iThuc =a.iThuc-b;
+	kq.iAo = a.iAo;
 	return kq;
 }
-SoPhuc operator*(float b, SoPhuc a)
+SoPhuc operator-(int b, SoPhuc a)
 {
 	SoPhuc kq;
-	kq.iThuc = b*a.iThuc;
-	kq.iAo = b*a.iAo;
+	kq.iThuc = b - a.iThuc;
+	kq.iAo = a.iAo;
 	return kq;
 }
-SoPhuc TinhToan(SoPhuc a, SoPhuc b)
+SoPhuc& SoPhuc::operator++()
 {
-
-	SoPhuc kq1, kq2, kq21, kq3, kq31, kq4, kq5, kq;
-	kq1 = (a + b);
-	kq2 = 2 * a;
-	kq21 = b - kq2;
-	kq3 = 4 * b;
-	kq31 = a - kq3;
-	kq4 = kq1 * kq21;
-	kq = kq4 / kq31;
-	return kq;
+	iThuc++;
+	iAo++;
+	return *this;
+}
+SoPhuc SoPhuc::operator++(int)
+{
+	SoPhuc temp(iThuc,iAo);
+	iThuc++;
+	iAo++;
+	return temp;
 }

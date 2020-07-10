@@ -15,21 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SoPhuc.cpp">
+    <ClCompile Include="Duongda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Quanli.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SoAo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SoPhuc.h">
+    <ClInclude Include="Duongda.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SoAo.h">
+    <ClInclude Include="Childclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quanli.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

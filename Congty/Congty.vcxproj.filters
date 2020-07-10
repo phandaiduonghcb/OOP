@@ -15,21 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SoPhuc.cpp">
+    <ClCompile Include="Nv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Nvsx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Nvvp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Nvql.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Quanlinv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SoAo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SoPhuc.h">
+    <ClInclude Include="Nv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SoAo.h">
+    <ClInclude Include="Date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nvsx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nvvp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nvql.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quanlinv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

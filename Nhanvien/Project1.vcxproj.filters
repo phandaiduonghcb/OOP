@@ -15,21 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SoPhuc.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="danhsach.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SoAo.cpp">
+    <ClCompile Include="ngay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nhanvien.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nhanviensx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nhanvienvp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SoPhuc.h">
+    <ClInclude Include="danhsach.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SoAo.h">
+    <ClInclude Include="ngay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nhanvien.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nhanviensx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nhanvienvp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

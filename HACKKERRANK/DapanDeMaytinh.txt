@@ -1,0 +1,499 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Vo
+{
+protected:
+    int loai;
+    string strMavo;
+    string strHang;
+    int iMausac;
+    float fGianhap;
+public:
+    Vo()
+    {
+        loai = -1;
+        strMavo = 'x';
+        strHang = 'x';
+        iMausac = -1;
+        fGianhap = 0;
+    }
+    virtual void Nhap()
+    {
+        cin >> strMavo;
+        cin >> iMausac;
+    }
+    virtual void Xuat() = 0;
+    virtual float getGianhap() = 0;
+};
+class VoNhom :public Vo
+{
+protected:
+public:
+    VoNhom() :Vo()
+    {
+    }
+    void Nhap()
+    {
+        Vo::Nhap();
+        fGianhap = 400;
+        loai = 1;
+    }
+    void Xuat()
+    {
+        strHang = "Black";
+        string strColor;
+        if (iMausac == 1)
+        {
+            strColor = "Do";
+        }
+        else
+        {
+            strColor = "Den";
+        }
+        cout << strMavo << " Nhom " << strHang << " " << strColor << " " << fGianhap << endl;
+    }
+    virtual float getGianhap()
+    {
+        return fGianhap;
+    }
+};
+class VoNhua :public Vo
+{
+public:
+    VoNhua() : Vo()
+    {
+    }
+    void Nhap()
+    {
+        Vo::Nhap();
+        loai = 2;
+        fGianhap = 200;
+    }
+    void Xuat()
+    {
+        strHang = "White";
+        string strColor;
+        if (iMausac == 1)
+        {
+            strColor = "Do";
+        }
+        else if (iMausac == 2)
+        {
+            strColor = "Den";
+        }
+        else
+        {
+            strColor = "Xanh";
+        }
+        cout << strMavo << " Nhua " << strHang << " " << strColor << " " << fGianhap << endl;
+    }
+    virtual float getGianhap()
+    {
+        return fGianhap;
+    }
+};
+class Dophangiai
+{
+protected:
+    float fGianhap;
+    float fKichthuoc;
+public:
+    Dophangiai()
+    {
+        fGianhap = fKichthuoc = -1;
+    }
+    virtual void Nhap1() = 0;
+    virtual void Nhap() = 0;
+    virtual void Xuat() = 0;
+    float getGia()
+    {
+        return fGianhap;
+    }
+};
+class FullHD :public Dophangiai
+{
+protected:
+    bool isChongloa;
+public:
+    void Nhap()
+    {
+        fKichthuoc = 4.7;
+        int choice;
+        cin >> choice;
+        if (choice == 1)
+            isChongloa = true;
+        else
+        {
+            isChongloa = false;
+        }
+        if (isChongloa)
+            fGianhap = 500;
+        else
+        {
+            fGianhap = 300;
+        }
+    }
+    void Nhap1()
+    {
+        isChongloa = true;
+        fGianhap = 500;
+    }
+    FullHD() :Dophangiai()
+    {
+        isChongloa = false;
+    }
+    void Xuat()
+    {
+        cout << "FullHD " << fGianhap << " ";
+        if (isChongloa)
+            cout << "Chongloa" << endl;
+        else
+        {
+            cout << "Khongchongloa" << endl;
+        }
+    }
+};
+class HD :public Dophangiai
+{
+protected:
+public:
+    HD() :Dophangiai()
+    {}
+    void Nhap() {
+        fKichthuoc = 4.7;
+        fGianhap = 200;
+    }
+    void Nhap1()
+    {}
+    void Xuat()
+    {
+        cout << "HD " << fGianhap << endl;
+    }
+};
+class ManHinh
+{
+protected:
+    string strMa;
+    string strHang;
+    Dophangiai* DPG;
+    //int iDophangiai;
+public:
+    ManHinh()
+    {
+        //iDophangiai = -1;
+        strMa = 'x';
+        strHang = 'x';
+    }
+    virtual void Nhap()
+    {
+        cin >> strMa >> strHang;
+        int choice;
+        cin >> choice;
+        if (choice == 1)
+        {
+            DPG = new HD();
+            DPG->Nhap();
+        }
+        else
+        {
+            DPG = new FullHD();
+            DPG->Nhap();
+        }
+    }
+    virtual void Nhap1()
+    {
+        cin >> strMa >> strHang;
+        DPG = new FullHD();
+        DPG->Nhap();
+    }
+    void Nhap2()
+    {
+        cin >> strMa >> strHang;
+        DPG = new FullHD();
+        DPG->Nhap1();
+    }
+    virtual void Xuat()
+    {
+        cout << strMa << " " << strHang << " ";
+        DPG->Xuat();
+    }
+    float getGia()
+    {
+        return DPG->getGia();
+    }
+};
+class CPU
+{
+protected:
+    int iLoai;
+    string strMa;
+    string strHang;
+    int iSocore;
+    float fXungnhip;
+    float fGianhap;
+public:
+    CPU()
+    {
+        iLoai = -1;
+        strMa = 'x';
+        strHang = 'x';
+        iSocore = -1;
+        fXungnhip = -1;
+        fGianhap = 0;
+    }
+    virtual void Nhap()
+    {
+        cin >> strMa;
+    }
+    virtual void Xuat() = 0;
+    float getGia()
+    {
+        return fGianhap;
+    }
+};
+class Alpha:public CPU
+{
+public:
+    Alpha() :CPU()
+    {}
+    void Nhap()
+    {
+        strHang = "Black";
+        iSocore = 2;
+        fXungnhip = 1.8;
+        fGianhap = 200;
+        CPU::Nhap();
+    }
+    void Xuat()
+    {
+        cout << strMa << " " << "Alpha " << strHang << " " << iSocore << " " << fXungnhip << " " << fGianhap << endl;
+    }
+};
+class Beta :public CPU
+{
+protected:
+public:
+    Beta() : CPU()
+    {
+
+    }
+    void Nhap()
+    {
+        strHang = "Black";
+        iSocore = 4;
+        fXungnhip =2.46;
+        fGianhap = 400;
+        CPU::Nhap();
+    }
+    void Xuat()
+    {
+        cout << strMa << " " << "Beta " << strHang << " " << iSocore << " " << fXungnhip << " " << fGianhap << endl;
+    }
+};
+class Gamma :public CPU
+{
+public:
+    Gamma() : CPU() {};
+    void Nhap()
+    {
+        strHang = "White";
+        iSocore = 4;
+        fXungnhip = 2.6;
+        fGianhap = 600;
+        CPU::Nhap();
+    }
+    void Xuat()
+    {
+        cout << strMa << " " << "Gamma " << strHang << " " << iSocore << " " << fXungnhip << " " << fGianhap << endl;
+    }
+};
+class Smartphone
+{
+protected:
+    int loai;
+    Vo* vo;
+    CPU* cpu;
+    ManHinh manhinh;
+    string strMa;
+    float fGia;
+public:
+    virtual void Nhap()
+    {
+        cin >> strMa;
+    }
+    Smartphone()
+    {
+        loai = -1;strMa = 'x';fGia = 0;
+    }
+    virtual void Xuat() = 0;
+};
+class Venus:public Smartphone
+{
+protected:
+public:
+    void Nhap()
+    {
+        loai = 1;
+        Smartphone::Nhap();
+        int choice_cpu;
+        cin >> choice_cpu;
+        switch (choice_cpu)
+        {
+        case 1:
+        {
+            cpu = new Alpha();
+            cpu->Nhap();
+            break;
+        }
+        case 2:
+        {
+            cpu = new Beta();
+            cpu->Nhap();
+            break;
+        }
+        }
+        manhinh.Nhap();
+        int choice_vo;
+        cin >> choice_vo;
+        if (choice_vo == 1)
+        {
+            vo = new VoNhom();
+            vo->Nhap();
+        }
+        else
+        {
+            vo = new VoNhua();
+            vo->Nhap();
+        }
+        float fgiacpu = cpu->getGia();
+        float fgiavo = vo->getGianhap();
+        float fgiaman = manhinh.getGia();
+        fGia = (fgiacpu + fgiavo + fgiaman)*1.3;
+    }
+    void Xuat()
+    {
+        cout << "Smartphone: " << strMa << " Venus " << fGia << endl;
+        cout << "CPU: ";cpu->Xuat();
+        cout << "Man hinh: ";manhinh.Xuat();
+        cout << "Vo smartphone: ";vo->Xuat();
+
+    }
+};
+class Mars : public Smartphone
+{
+protected:
+public:
+    void Nhap()
+    {
+        loai = 2;
+        Smartphone::Nhap();
+        int choice_cpu;
+        cin >> choice_cpu;
+        switch (choice_cpu)
+        {
+        case 1:
+        {
+            cpu = new Alpha();
+            cpu->Nhap();
+            break;
+        }
+        case 2:
+        {
+            cpu = new Beta();
+            cpu->Nhap();
+            break;
+        }
+        case 3:
+        {
+            cpu = new Gamma();
+            cpu->Nhap();
+            break;
+        }
+        }
+        manhinh.Nhap1();
+        vo = new VoNhom();
+        vo->Nhap();
+        float fgiacpu = cpu->getGia();
+        float fgiavo = vo->getGianhap();
+        float fgiaman = manhinh.getGia();
+        fGia = (fgiacpu + fgiavo + fgiaman) * 1.5;
+    }
+    void Xuat()
+    {
+        cout << "Smartphone: " << strMa << " Mars " << fGia << endl;
+        cout << "CPU: ";cpu->Xuat();
+        cout << "Man hinh: ";manhinh.Xuat();
+        cout << "Vo smartphone: ";vo->Xuat();
+    }
+};
+class Jupiter : public Smartphone
+{
+protected:
+public:
+    void Nhap()
+    {
+        cpu = new Gamma();
+        cpu->Nhap();
+        manhinh.Nhap2();
+        vo = new VoNhom();
+        vo->Nhap();
+        float fgiacpu = cpu->getGia();
+        float fgiavo = vo->getGianhap();
+        float fgiaman = manhinh.getGia();
+        fGia = (fgiacpu + fgiavo + fgiaman) * 1.8;
+    }
+    void Xuat()
+    {
+        cout << "Smartphone: " << strMa << " Jupiter " << fGia << endl;
+        cout << "CPU: ";cpu->Xuat();
+        cout << "Man hinh: ";manhinh.Xuat();
+        cout << "Vo smartphone: ";vo->Xuat();
+    }
+};
+class Quanli
+{
+private:
+    Smartphone** a;
+    int n;
+public:
+    void Nhap()
+    {
+        cin >> n;
+        a = new Smartphone*[n];
+        for (int i = 0;i < n;i++) {
+            int choice;
+            cin >> choice;
+            switch (choice)
+            {
+            case 1:
+                a[i] = new Venus();
+                a[i]->Nhap();
+                break;
+            case 2:
+                a[i] = new Mars();
+                a[i]->Nhap();
+                break;
+            case 3:
+                a[i] = new Jupiter();
+                a[i]->Nhap();
+                break;
+            default:
+                break;
+            }
+        }
+    }
+    void Xuat()
+    {
+        for (int i = 0;i < n;i++)
+        {
+            a[i]->Xuat();
+        }
+    }
+};
+int main()
+{
+    Quanli a;
+    a.Nhap();
+    a.Xuat();
+}

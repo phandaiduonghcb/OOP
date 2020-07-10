@@ -1,0 +1,111 @@
+#include <iostream>
+using namespace std;
+class Champ
+{
+protected:
+    string strName;
+    string strRace;
+    float fCs;
+    float fDamage;
+    string strSkill;
+public:
+    Champ()
+    {
+        strName = "None";
+        strRace = "None";
+        fDamage = 0;
+        strSkill = "None";
+    }
+    void Nhap()
+    {
+        cin >> fCs;
+    }
+    void Xuat()
+    {
+        cout << strName << " - Sat thuong gay ra: " << fDamage<<endl;
+    }
+    virtual void setDamage(int iTurn) = 0;
+    virtual void SetChamp() = 0;
+};
+class Shaco: public Champ
+{
+protected:
+public:
+    void SetChamp()
+    {
+        strName = "Shaco";
+        strRace = "Mat tham";
+        strSkill = "Dam len";
+        
+    }
+    void setDamage(int iTurn)
+    {
+        fDamage = (fCs + 10)* 2 * iTurn;
+    }
+};
+class Zed : public Champ
+{
+protected:
+public:
+    void SetChamp()
+    {
+        strName = "Zed";
+        strRace = "Mat tham";
+        strSkill = "Khinh thuong ke yeu";
+    }
+    void setDamage(int iTurn)
+    {
+        fDamage = (fCs + 10) * (iTurn / 3) * 3 + (fCs + 10) * (iTurn - (iTurn / 3));
+    }
+};
+class Quanli
+{
+private:
+    Champ** arr;
+    int iCount;
+public:
+    void Nhap()
+    {
+        cin >> iCount;
+        arr = new Champ * [iCount];
+        for (int i = 0;i < iCount;i++)
+        {
+            int iChoice;
+            cin >> iChoice;
+            switch (iChoice)
+            {
+            case 1:
+                arr[i] = new Shaco();
+                arr[i]->SetChamp();
+                arr[i]->Nhap();
+                break;
+            case 2:
+                arr[i] = new Zed();
+                arr[i]->SetChamp();
+                arr[i]->Nhap();
+                break;
+            default:
+                break;
+            }
+        }
+        int iTurn;
+        cin >> iTurn;
+        for (int i = 0;i < iCount;i++)
+        {
+            arr[i]->setDamage(iTurn);
+        }
+    }
+    void Xuat()
+    {
+        for (int i = 0;i < iCount;i++)
+        {
+            arr[i]->Xuat();
+        }
+    }
+};
+int main()
+{
+    Quanli a;
+    a.Nhap();
+    a.Xuat();
+}

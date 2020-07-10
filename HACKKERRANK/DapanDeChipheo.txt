@@ -1,0 +1,168 @@
+#include <iostream>
+using namespace std;
+class Chai
+{
+protected:
+    int loai;
+    float fdientich;
+    float fthetich;
+public:
+    Chai()
+    {
+        fdientich = -1;
+        fthetich = -1;
+    }
+    virtual void Nhap() = 0;
+    virtual float getDientich() = 0;
+    virtual float getNuoc() = 0;
+};
+class TruTron : public Chai
+{
+protected:
+    float h;
+    float r;
+public:
+    TruTron() :Chai()
+    {
+        h = -1;
+        r = -1;
+    }
+    void Nhap()
+    {
+        loai = 1;
+        cin >> h >> r;
+    }
+    float getDientich()
+    {
+        fdientich = 2 * 3.14 * r * h;
+        return fdientich;
+    }
+    float getNuoc()
+    {
+        fthetich = 3.14 * (r * r) * h;
+        return fthetich;
+    }
+};
+class Hcn :public Chai
+{
+protected:
+    float c;
+    float d;
+    float r;
+public:
+    Hcn():Chai()
+    {
+        c = d = r = -1;
+    }
+    void Nhap()
+    {
+        loai = 2;
+        cin >> c >> d >> r;
+    }
+    float getDientich()
+    {
+        fdientich = 2*c*(d+r)+2*d*r;
+        return fdientich;
+    }
+    float getNuoc()
+    {
+        fthetich = d * r * c;
+        return fthetich;
+    }
+};
+class Lapphuong : public Chai
+{
+protected:
+    float c;
+public:
+    Lapphuong() :Chai()
+    {
+        c = -1;
+    }
+    void Nhap()
+    {
+        loai = 3;
+        cin >> c;
+    }
+    float getDientich()
+    {
+        fdientich = c * c*6;
+        return fdientich;
+    }
+    float getNuoc()
+    {
+        fthetich = c * c * c;
+        return fthetich;
+    }
+
+};
+class Quanli
+{
+private:
+    Chai** a;
+    int n;
+public:
+    Quanli()
+    {
+        n = -1;
+    }
+    void Nhap()
+    {
+        cin >> n;
+        a = new Chai * [n];
+        for (int i = 0;i < n;i++)
+        {
+            int choice;
+            cin >> choice;
+            switch (choice)
+            {
+            case 1:
+            {
+                a[i] = new TruTron();
+                a[i]->Nhap();
+                break;
+            }
+            case 2:
+            {
+                a[i] = new Hcn();
+                a[i]->Nhap();
+                break;
+            }
+            case 3:
+            {
+                a[i] = new Lapphuong();
+                a[i]->Nhap();
+                break;
+            }
+            default:
+                break;
+            }
+        }
+    }
+    void TinhDientich()
+    {
+        float sum = 0;
+        for (int i = 0;i < n;i++)
+        {
+            sum += a[i]->getDientich();
+        }
+        cout << "Dien tich chai vo: " << sum << endl;
+    }
+    void TinhNuoc()
+    {
+        float sum = 0;
+        for (int i = 0;i < n;i++)
+        {
+            sum += a[i]->getNuoc();
+        }
+        cout << "Luong nuoc tren mat dat: " << sum*10/100;
+    }
+};
+int main()
+{
+    Quanli a;
+    a.Nhap();
+    a.TinhDientich();
+    a.TinhNuoc();
+    return 0;
+}

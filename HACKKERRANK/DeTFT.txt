@@ -1,0 +1,15 @@
+Đấu trường chân lý là một trò chơi thuộc thể loại AutoGame (tức là bạn chỉ cần sắp xếp các tướng trên sàn đấu và xem chúng tự đánh nhau). Để hiện thực hóa cơ chế tự đánh nhau, lập trình viên phải sử dụng rất nhiều kiến thức OOP, chúng ta sẽ cố gắng code một chức năng con là thống kê số liệu trong cơ chế này.
+
+Nhập vào thông tin của n tướng trên bàn cờ, tính toán khả năng gây sát thương (= chỉ số tấn công) trong m lượt.
+
+Mỗi tướng có thông tin sau: tên, tên tộc, tấn công và skill riêng, người dùng chỉ cần nhập chỉ số tấn công.
+
+Các tướng hệ Mật thám được tự động tăng 10 chỉ số tấn công, bao gồm 2 tướng:
+
+Shaco (1) – hệ Mật thám - Skill Đâm lén: Sát thương gây ra x 2 so với bình thường
+Zed (2) - hệ Mật thám – Skill Khinh thường kẻ yếu: sau mỗi 2 lượt, lượt 3 gây ra sát thương x 3.
+Áp dụng kiến thức lập trình hướng đối tượng (đa hình & kế thừa) để xây dựng chương trình thực hiện các yêu cầu sau:
+
+Nhập số lượng tướng n, thông tin n tướng và số lượt m.
+Xuất ra thông tin n tướng dưới định dạng sau
+[Tên tướng] – Sat thuong gay ra: […]
